@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自己紹介の編集</title>
+  <link rel="stylesheet" href="css/input.css">
+  <!--編集画面-->
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><img src="img/サーチアイコン.png" alt="さがす"/></li>
+        <li><img src="img/いいねアイコン.png" alt="いいね"/></li>
+        <li><img src="img/コメントアイコン7.png" alt="コメント"/></li>
+        <li><img src="img/履歴書アイコン6.png" alt="プロフィール"></li>
+      </ul>
+    </nav>
+   </header>
+
+   
+  
+  <!--編集画面-->
+  <div> 
+   <h1>自己紹介の編集</h1>
+   <main>
+    <textarea id="text_area"></textarea>
+    <span class="count">0/1000</span><!--文字数カウントを表示する-->
+    <ul>
+      <li id="save">保存</li>
+      <li id="clear">クリア</li>
+    </ul>
+    </main>
+  </div>
+
+  <!--サポートコンテンツ-->
+
+  <!--注意事項-->
+  <div class="caution">
+  <h2>注意事項</h2>
+  <p>以下に該当する投稿は審査時に否認されます</br>
+     また、審査完了までにお時間がかかる場合もあります
+  </p>
+  </div>
+
+  <footer>
+  <small>TomoMarry</small>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+  //最大文字数
+  const maxLength = 1000;
+
+  //文字数カウント表示の処理
+  $("#text_area").on("input",function(){
+    let text = $(this).val();//現在のテキスト内容
+    let textLength = text.length;//現在の文字数
+
+    //1000文字を超えないように制限
+    if(textLength > maxLength) {
+     text = text.substring(0,maxLength);//入力を1000文字までに制限
+     textLength = maxLength; //textLengthを1000に修正
+     $(this).val(text);//テキストエリアの値を制限後の文字列に更新
+    }
+
+     //文字数カウントの表示
+     $(".count").text(`${textLength}/${maxLength}`);
+
+    //1000文字を超えると背景色変更
+    if (textLength === maxLength) {
+      $(".count").addClass("warning");//警告色
+    } else {
+      $(".count").removeClass("warning");//警告色解除
+    }
+  });
+
+ //保存
+$("#save").on("click",function(){
+  const data = {
+    "text": $("#text_area").val()
+  };
+  const jsonData = JSON.stringify(data);
+  localStorage.setItem("memo",jsonData);
+  location.href = "./index.html";
+});
+
+//削除
+$("#clear").on("click",function(){
+  localStorage.removeItem("memo");
+  $("input").val("");
+  $("#text_area").val("");//テキストエリアの内容をクリア
+  $(".count").text("0/1000");//文字数カウントリセット
+});
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+body{
+    margin-right: auto;
+    margin-left: auto;
+    padding:0;
+    width: 700px;
+    text-align:center;
+    font-size: 13px;
+    color: rgba(0,0, 0, 0.7);
+    font-family: 'メイリオ', Meiryo, sans-serif;  
+}
+
+img {
+    border: none;
+}
+
+
+header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+/*ナビゲーションのバー*/
+nav ul {
+    display: flex;  /* Flexbox を使って要素を横並びに配置 */
+    justify-content: space-evenly; /* アイテムを均等に配置 */
+    align-items: center;/* アイテムを垂直方向に中央揃え */
+    padding: 5px;
+    list-style-type: none; /* 不要な余白を削除 */
+    margin: 0; /* ナビゲーションバーの外部の余白を削除 */
+}
+nav ul li {
+    display: inline-block; /* 各リストアイテムをブロック表示にしてインラインで並べる */
+}
+
+nav ul li img {
+    width: 40px;
+    height: auto; /* 高さは自動調整 */
+    object-fit: contain; /* 画像が歪まないようにする */
+}
+
+
+
+main{
+    border-bottom:1px solid #ccc;
+    position:relative;
+}
+
+.count{
+    display: flex;
+    justify-content: flex-end;
+}
+
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:100%;
+}
+li{
+    text-align: center;
+    list-style-type:none;
+    background-color: #FFF;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+
+input,textarea{
+    margin: 3%;
+    width: 95%;
+    font-size:80%;
+}
+input{
+    height: 30px;
+}
+textarea{
+    height: 150px;
+}
+
+
+div p{
+  font-size: 10px;
+  height: auto;
+}
+
+.warning {
+   color: #ffcccc;
+  }
+
+footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+}
+
